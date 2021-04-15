@@ -1,0 +1,7 @@
+# Helm chart definition for sat-cfs-install helm chart.
+# (C) Copyright 2021 Hewlett Packard Enterprise Development LP.
+apiVersion: v1
+description: "Kubernetes resources for sat-cfs-install"
+name: "sat-cfs-install"
+home: "sat/sat-cfs-install"
+version: 1.0.0

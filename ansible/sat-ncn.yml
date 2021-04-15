@@ -1,0 +1,12 @@
+#!/usr/bin/env ansible-playbook
+#
+# Ansible playbook for installing cray-sat-podman on the management NCNs
+#
+# (C) Copyright 2021 Hewlett Packard Enterprise Development LP.
+
+- hosts:
+    - Management_Master
+  any_errors_fatal: true
+  remote_user: root
+  roles:
+    - role: sat-ncn
