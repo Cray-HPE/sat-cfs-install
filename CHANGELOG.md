@@ -1,18 +1,4 @@
-# Introduction
-
-`sat-cfs-install` contains the Helm chart for importing SAT configuration
-to VCS, which can be run via CFS to configure SAT on management NCNs.
-
-# Repository Layout
-
-| Path                          | Description                                   |
-| ----------------------------- | --------------------------------------------- |
-| `ansible/`                    | Ansible playbook and role for configuring SAT |
-| `kubernetes/sat-cfs-install/` | `sat-cfs-install` helm chart                  |
-| `.version`                    | Version of `sat-cfs-install` helm chart       |
-| `sat_product_version`         | Version of corresponding SAT release          |
-
-# Copying
+# Changelog
 
 (C) Copyright 2021 Hewlett Packard Enterprise Development LP.
 
@@ -33,3 +19,14 @@ THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
 OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.0.0] - 2021-04-16
+
+### Added
+- Added Helm chart and Docker image to import Ansible playbook and role to
+  VCS, which will install cray-sat-podman on the management NCNs.
