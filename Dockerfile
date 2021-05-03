@@ -6,7 +6,6 @@ FROM arti.dev.cray.com/csm-docker-stable-local/cf-gitea-import:@cf_gitea_import_
 
 WORKDIR /
 ENV CF_IMPORT_PRODUCT_NAME=sat
-ADD sat_product_version /product_version
 
 # Copy in sat Ansible content
 COPY ansible/ /content/
