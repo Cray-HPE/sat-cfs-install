@@ -25,6 +25,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2021-04-29
+
+### Removed
+- Remove ``/product_version`` from the Docker image, and remove
+  ``CF_IMPORT_PRODUCT_VERSION`` from the Helm chart, as this should
+  be specified in the Loftsman manifest.
+- Remove default config image tag from Helm chart values.
+
+## [1.0.1] - 2021-04-28
+
+### Changed
+- Updated the base ``cray-import-config`` Helm chart version from ~0.1.4
+  to ~0.2.7.
+
 ## [1.0.0] - 2021-04-16
 
 ### Added
