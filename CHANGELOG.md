@@ -28,8 +28,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.3] - 2021-09-01
 
 ### Changed
-- Updated version of ``cf-gitea-import`` to address OpenSSL CVE-2021-3711.
-- Hardcode version of ``cf-gitea-import`` to 1.3.39.
+- Hardcode version of ``cf-gitea-import``.
+
+### Security
+- Updated version of ``cf-gitea-import`` to 1.3.39
+  to address OpenSSL CVE-2021-3711.
 - Change docker image to run as the nobody user with UID/GID = 65534.
 
 ## [1.0.2] - 2021-04-29
