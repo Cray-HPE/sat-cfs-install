@@ -2,10 +2,11 @@
 # (C) Copyright 2021 Hewlett Packard Enterprise Development LP.
 
 # Use the cf-gitea-import as a base image
-FROM arti.dev.cray.com/csm-docker-stable-local/cf-gitea-import:@cf_gitea_import_image_tag@
+FROM artifactory.algol60.net/csm-docker/stable/cf-gitea-import:1.3.39
+USER nobody:nobody
 
 WORKDIR /
 ENV CF_IMPORT_PRODUCT_NAME=sat
 
 # Copy in sat Ansible content
-COPY ansible/ /content/
+COPY --chown=nobody:nobody ansible/ /content/

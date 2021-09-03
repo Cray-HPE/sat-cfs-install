@@ -25,6 +25,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2021-09-01
+
+### Changed
+- Hardcode version of ``cf-gitea-import``.
+
+### Security
+- Updated version of ``cf-gitea-import`` to 1.3.39
+  to address OpenSSL CVE-2021-3711.
+- Change docker image to run as the nobody user with UID/GID = 65534.
+
 ## [1.0.2] - 2021-04-29
 
 ### Removed
