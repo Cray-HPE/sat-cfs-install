@@ -9,4 +9,5 @@ dockerBuildPipeline {
   name = "sat-cfs-install"
   product = "sat"
   description = "Helm chart for uploading SAT NCN configuration into gitea"
+  versionScript = "version.sh"
 }
