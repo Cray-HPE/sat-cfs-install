@@ -1,7 +1,5 @@
 # Default variables for sat-ncn role.
-# (C) Copyright 2021 Hewlett Packard Enterprise Development LP.
+# (C) Copyright 2021-2022 Hewlett Packard Enterprise Development LP.
 ---
 sat_repos:
   - "https://packages.local/repository/sat-sle-15sp2"
-  - "https://packages.local/repository/SUSE-SLE-Module-Containers-15-SP2-x86_64-Pool"
-  - "https://packages.local/repository/SUSE-SLE-Module-Containers-15-SP2-x86_64-Updates"
