@@ -1,8 +1,0 @@
-# Requirements for sat-cfs-install helm chart.
-# (C) Copyright 2021 Hewlett Packard Enterprise Development LP.
-
----
-dependencies:
-  - name: cray-import-config
-    version: "~0.2.7"
-    repository: "@cray-internal"
