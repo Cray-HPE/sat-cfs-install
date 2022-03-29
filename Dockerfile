@@ -1,8 +1,8 @@
 # Dockerfile for importing sat content into gitea instances on Shasta.
-# (C) Copyright 2021 Hewlett Packard Enterprise Development LP.
+# (C) Copyright 2021-2022 Hewlett Packard Enterprise Development LP.
 
 # Use the cf-gitea-import as a base image
-FROM artifactory.algol60.net/csm-docker/stable/cf-gitea-import:1.3.39
+FROM artifactory.algol60.net/csm-docker/stable/cf-gitea-import:1.4.69
 USER nobody:nobody
 
 WORKDIR /
