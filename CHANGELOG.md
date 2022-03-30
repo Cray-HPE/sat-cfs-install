@@ -1,6 +1,6 @@
 # Changelog
 
-(C) Copyright 2021 Hewlett Packard Enterprise Development LP.
+(C) Copyright 2021-2022 Hewlett Packard Enterprise Development LP.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -24,6 +24,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.1.0] - 2022-03-25
+
+### Changed
+- Updated base cf-gitea-import container image version from 1.3.39 to 1.4.69.
+
+## [1.0.5] - 2022-03-16
+
+### Changed
+- Removed SLE repos from sat-ncn Ansible role since the only dependencies we
+  would need from those repositories are already installed on the NCNs.
 
 ## [1.0.4] - 2021-12-13
 
