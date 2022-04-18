@@ -1,18 +1,27 @@
 # Main tasks for sat-ncn role.
-# (C) Copyright 2021 Hewlett Packard Enterprise Development LP.
+# (C) Copyright 2021-2022 Hewlett Packard Enterprise Development LP.
 ---
 - name: Add SAT zypper repositories
   zypper_repository:
-    repo: "{{ item }}"
-    name: "{{ item | basename }}"
-    disable_gpg_check: yes
-  with_items: "{{ sat_repos }}"
+    repo: "{{ item.repo }}"
+    name: "{{ item.name }}"
+    disable_gpg_check: "{{ item.disable_gpg_check }}"
+  loop: "{{ sat_repos }}"
+
+# The SAT repo is not signed, but the individual packages are, so disable GPG
+# checks on the repo, but not on the packages.
+- name: Allow unsigned repo metadata
+  command: "zypper modifyrepo --gpgcheck-allow-unsigned-repo {{ item.name }}"
+  args:
+    warn: no  # Ansible's zypper module does not provide this feature
+  # Only need to disable repo check if GPG check is enabled
+  when: item.disable_repo_gpg_check and not item.disable_gpg_check
+  loop: "{{ sat_repos }}"
 
 - name: Ensure cray-sat-podman is installed
   zypper:
     name: cray-sat-podman
     state: latest
-    disable_gpg_check: yes
     disable_recommends: no
     force: yes
     update_cache: yes
