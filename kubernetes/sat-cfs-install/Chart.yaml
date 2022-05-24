@@ -26,7 +26,7 @@ apiVersion: v2
 description: "Kubernetes resources for sat-cfs-install"
 name: "sat-cfs-install"
 home: "sat/sat-cfs-install"
-version: 2.0.0
+version: 2.0.1
 dependencies:
   - name: cray-import-config
     version: "2.0.0"
