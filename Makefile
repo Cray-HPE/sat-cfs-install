@@ -21,13 +21,21 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
-# Helm chart definition for sat-cfs-install helm chart.
-apiVersion: v2
-description: "Kubernetes resources for sat-cfs-install"
-name: "sat-cfs-install"
-home: "sat/sat-cfs-install"
-version: 2.0.0
-dependencies:
-  - name: cray-import-config
-    version: "2.0.0"
-    repository: "https://artifactory.algol60.net/artifactory/csm-helm-charts/"
+
+NAME ?= sat-cfs-install
+VERSION ?= $(shell ./version.sh)
+CHART_PATH ?= kubernetes
+CHART_NAME ?= $(NAME)
+CHART_VERSION ?= local
+
+all : prep image chart
+
+prep:
+		./runBuildPrep.sh
+
+image:
+		docker build --pull $(DOCKER_ARGS) --tag '$(NAME):$(VERSION)' .
+
+chart:
+		helm dep up $(CHART_PATH)/$(CHART_NAME)
+		helm package $(CHART_PATH)/$(CHART_NAME) -d $(CHART_PATH)/.packaged --version $(CHART_VERSION)
