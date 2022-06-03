@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 #
 # MIT License
 #
@@ -22,24 +21,21 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
-#
-# Build preparation for sat-cfs-install.
-#
 
-# Set the docker image name for the config image
-config_image_name="${NAME}:${VERSION}"
-echo "config_image_name=${config_image_name}"
-sed -i "s/@config_image_name@/${config_image_name}/g" kubernetes/sat-cfs-install/values.yaml
+NAME ?= sat-cfs-install
+VERSION ?= $(shell ./version.sh)
+CHART_PATH ?= kubernetes
+CHART_NAME ?= $(NAME)
+CHART_VERSION ?= local
 
-# Set the product name
-sed -i s/@product_name@/sat/g kubernetes/sat-cfs-install/values.yaml
+all : prep image chart
 
-cat kubernetes/sat-cfs-install/values.yaml
+prep:
+		./runBuildPrep.sh
 
-# Only enable GPG checking on release branch; RPMs only get signed on release branches
-disable_gpg_check=yes
-branch_name=$(git rev-parse --abbrev-ref HEAD)
-if [[ "$branch_name" == release/* ]]; then
-    disable_gpg_check=no
-fi
-sed -i "s/@disable_gpg_check@/${disable_gpg_check}/" ansible/roles/sat-ncn/defaults/main.yml
+image:
+		docker build --pull $(DOCKER_ARGS) --tag '$(NAME):$(VERSION)' .
+
+chart:
+		helm dep up $(CHART_PATH)/$(CHART_NAME)
+		helm package $(CHART_PATH)/$(CHART_NAME) -d $(CHART_PATH)/.packaged --version $(CHART_VERSION)
