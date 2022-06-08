@@ -27,7 +27,7 @@
 #
 
 # Set the docker image name for the config image
-config_image_name="${NAME}:${VERSION}"
+config_image_name="${NAME}"
 echo "config_image_name=${config_image_name}"
 sed -i "s/@config_image_name@/${config_image_name}/g" kubernetes/sat-cfs-install/values.yaml
 

@@ -68,11 +68,13 @@ pipeline {
             steps {
                 script {
                     publishCsmDockerImage(
+                        artifactoryRepo: 'sat-docker',
                         image: env.NAME,
                         tag: env.VERSION,
                         isStable: env.IS_STABLE
                     )
                     publishCsmHelmCharts(
+                        artifactoryRepo: 'sat-helm-charts',
                         component: env.NAME,
                         chartsPath: "${WORKSPACE}/kubernetes/.packaged",
                         isStable: env.IS_STABLE
