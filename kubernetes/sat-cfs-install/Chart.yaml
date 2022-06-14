@@ -26,4 +26,4 @@ apiVersion: v1
 description: "Kubernetes resources for sat-cfs-install"
 name: "sat-cfs-install"
 home: "sat/sat-cfs-install"
-version: 1.0.4
+version: 1.0.5
