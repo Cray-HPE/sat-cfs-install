@@ -1,4 +1,3 @@
-#!/usr/bin/env sh
 #
 # MIT License
 #
@@ -22,16 +21,21 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
-#
-# Build preparation for sat-cfs-install.
-#
 
-# Set the docker image name for the config image
-config_image_name="${NAME}"
-echo "config_image_name=${config_image_name}"
-sed -i s/@config_image_name@/${config_image_name}/g kubernetes/sat-cfs-install/values.yaml
+NAME ?= sat-cfs-install
+VERSION ?= $(shell ./version.sh)
+CHART_PATH ?= kubernetes
+CHART_NAME ?= $(NAME)
+CHART_VERSION ?= local
 
-# Set the product name
-sed -i s/@product_name@/sat/g kubernetes/sat-cfs-install/values.yaml
+all : prep image chart
 
-cat kubernetes/sat-cfs-install/values.yaml
+prep:
+		./runBuildPrep.sh
+
+image:
+		docker build --pull $(DOCKER_ARGS) --tag '$(NAME):$(VERSION)' .
+
+chart:
+		helm dep up $(CHART_PATH)/$(CHART_NAME)
+		helm package $(CHART_PATH)/$(CHART_NAME) -d $(CHART_PATH)/.packaged --version $(CHART_VERSION)
