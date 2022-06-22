@@ -47,3 +47,14 @@
     disable_recommends: no
     force: yes
     update_cache: yes
+
+- name: "Ensure configuration file has 0600 permissions"
+  file:
+    path: "/root/.config/sat/sat.toml"
+    mode: 0600
+
+- name: "Ensure tokens directory has 0700 permissions"
+  file:
+    path: "/root/.config/sat/tokens"
+    state: "directory"
+    mode: 0700
