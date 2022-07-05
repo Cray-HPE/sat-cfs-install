@@ -30,3 +30,7 @@ sat_repos:
     # Value replaced by runBuildPrep.sh
     disable_gpg_check: @disable_gpg_check@
     disable_repo_gpg_check: yes
+
+sat_packages:
+  - cray-sat-podman
+  - docs-sat
