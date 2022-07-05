@@ -40,10 +40,22 @@
   when: item.disable_repo_gpg_check and not item.disable_gpg_check
   loop: "{{ sat_repos }}"
 
-- name: Ensure cray-sat-podman is installed
+- name: Ensure SAT packages are installed
   zypper:
-    name: cray-sat-podman
+    name: "{{ item }}"
     state: latest
     disable_recommends: no
     force: yes
     update_cache: yes
+  loop: "{{ sat_packages }}"
+
+- name: "Ensure configuration file has 0600 permissions"
+  file:
+    path: "/root/.config/sat/sat.toml"
+    mode: 0600
+
+- name: "Ensure tokens directory has 0700 permissions"
+  file:
+    path: "/root/.config/sat/tokens"
+    state: "directory"
+    mode: 0700
