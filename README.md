@@ -1,3 +1,8 @@
+# Deprecation Notice
+
+As of SAT Product Stream 2.4, this repository is no longer used.
+The ansible content for SAT installation can now be found in `sat-product-stream`.
+
 # Introduction
 
 `sat-cfs-install` contains the Helm chart for importing SAT configuration
